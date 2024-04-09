@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Confederation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private Integer id;
 
     @Size(max = 255)
