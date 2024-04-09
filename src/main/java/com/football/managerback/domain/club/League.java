@@ -1,15 +1,17 @@
-package com.football.managerback.domain;
+package com.football.managerback.domain.club;
 
+import com.football.managerback.domain.club.Country;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "country_flag", schema = "manager")
-public class CountryFlag {
+@Table(name = "league", schema = "manager")
+public class League {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -20,8 +22,9 @@ public class CountryFlag {
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
+    @Size(max = 255)
     @NotNull
-    @Column(name = "image_data", nullable = false)
-    private byte[] imageData;
+    @Column(name = "name", nullable = false)
+    private String name;
 
 }

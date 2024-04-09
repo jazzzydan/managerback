@@ -1,5 +1,7 @@
-package com.football.managerback.domain;
+package com.football.managerback.domain.player;
 
+import com.football.managerback.domain.user.User;
+import com.football.managerback.domain.game.Game;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

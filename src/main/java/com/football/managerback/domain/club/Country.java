@@ -1,6 +1,6 @@
-package com.football.managerback.domain;
+package com.football.managerback.domain.club;
 
-import com.football.managerback.domain.city.City;
+import com.football.managerback.domain.club.Confederation;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -10,8 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "club", schema = "manager")
-public class Club {
+@Table(name = "country", schema = "manager")
+public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -19,12 +19,8 @@ public class Club {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "league_id", nullable = false)
-    private League league;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id")
-    private City city;
+    @JoinColumn(name = "confederation_id", nullable = false)
+    private Confederation confederation;
 
     @Size(max = 255)
     @NotNull

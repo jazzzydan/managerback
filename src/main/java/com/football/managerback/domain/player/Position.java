@@ -1,4 +1,4 @@
-package com.football.managerback.domain;
+package com.football.managerback.domain.player;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -9,21 +9,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "confederation", schema = "manager")
-public class Confederation {
+@Table(name = "\"position\"", schema = "manager")
+public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 255)
+    @Size(max = 4)
     @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Size(max = 255)
-    @NotNull
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "code", nullable = false, length = 4)
+    private String code;
 
 }
