@@ -39,3 +39,6 @@ out/
 ### manually added stuff
 .jba
 /src/main/generated/
+
+### Token ###
+src/main/resources/jwt.properties
