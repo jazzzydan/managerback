@@ -4,7 +4,7 @@ INSERT INTO manager.role (id, name) VALUES (default, 'Scout');
 INSERT INTO manager.role (id, name) VALUES (default, 'Admin');
 INSERT INTO manager.role (id, name) VALUES (default, 'Coach');
 
-INSERT INTO manager."user" (id, role_id, username, email, password, status) VALUES (default, 1, 'daniil', 'na', '123', 'A');
+INSERT INTO manager."user" (id, role_id, username, email, password, status) VALUES (default, 3, 'daniil', 'na', '123', 'A');
 INSERT INTO manager."user" (id, role_id, username, email, password, status) VALUES (default, 2, 'kevin', 'na', '123', 'A');
 INSERT INTO manager."user" (id, role_id, username, email, password, status) VALUES (default, 2, 'uve', 'na', '123', 'A');
 

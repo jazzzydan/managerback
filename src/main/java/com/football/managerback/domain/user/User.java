@@ -1,6 +1,5 @@
 package com.football.managerback.domain.user;
 
-import com.football.managerback.domain.user.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
