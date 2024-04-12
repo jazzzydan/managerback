@@ -1,8 +1,8 @@
 
-INSERT INTO manager.role (id, name) VALUES (default, 'Guest');
-INSERT INTO manager.role (id, name) VALUES (default, 'Scout');
-INSERT INTO manager.role (id, name) VALUES (default, 'Admin');
-INSERT INTO manager.role (id, name) VALUES (default, 'Coach');
+INSERT INTO manager.role (id, name) VALUES (default, 'guest');
+INSERT INTO manager.role (id, name) VALUES (default, 'scout');
+INSERT INTO manager.role (id, name) VALUES (default, 'admin');
+INSERT INTO manager.role (id, name) VALUES (default, 'coach');
 
 INSERT INTO manager."user" (id, role_id, username, email, password, status) VALUES (default, 3, 'daniil', 'na', '123', 'A');
 INSERT INTO manager."user" (id, role_id, username, email, password, status) VALUES (default, 2, 'kevin', 'na', '123', 'A');

@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class UserInfo implements Serializable {
+    private Integer userId;
     private String roleName;
     private String username;
     private String email;
