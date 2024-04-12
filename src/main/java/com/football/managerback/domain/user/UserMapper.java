@@ -1,6 +1,8 @@
 package com.football.managerback.domain.user;
 
+import com.football.managerback.manager.Status;
 import com.football.managerback.manager.login.dto.LoginResponse;
+import com.football.managerback.manager.user.dto.UserFullInfo;
 import com.football.managerback.manager.user.dto.UserInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -23,4 +25,10 @@ public interface UserMapper {
     UserInfo toUserInfo(User user);
 
     List<UserInfo> toUserInfos(List<User> users);
+
+    @Mapping(source = "username", target = "username")
+    @Mapping(source = "email", target = "email")
+    @Mapping(source = "password", target = "password")
+    @Mapping(constant = Status.ACTIVE, target = "status")
+    User toUserEntity(UserFullInfo userFullInfo);
 }

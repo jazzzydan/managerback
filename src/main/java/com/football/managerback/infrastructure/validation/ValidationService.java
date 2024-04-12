@@ -5,7 +5,8 @@ import com.football.managerback.infrastructure.exception.ForbiddenException;
 
 import java.util.Optional;
 
-import static com.football.managerback.infrastructure.error.Error.INCORRECT_CREDENTIALS;
+import static com.football.managerback.infrastructure.error.Error.*;
+
 
 public class ValidationService {
     public static User getValidExistingUser(Optional<User> optionalUser) {
@@ -13,5 +14,17 @@ public class ValidationService {
             throw new ForbiddenException(INCORRECT_CREDENTIALS.getMessage(), INCORRECT_CREDENTIALS.getErrorCode());
         }
         return optionalUser.get();
+    }
+
+    public static void validateUsernameAvailable(boolean usernameExists) {
+        if (usernameExists) {
+            throw new ForbiddenException(USERNAME_UNAVAILABLE.getMessage(), USERNAME_UNAVAILABLE.getErrorCode());
+        }
+    }
+
+    public static void validateEmailAvailable(boolean emailExists) {
+        if (emailExists) {
+            throw new ForbiddenException(EMAIL_UNAVAILABLE.getMessage(), EMAIL_UNAVAILABLE.getErrorCode());
+        }
     }
 }
