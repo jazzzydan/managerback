@@ -24,7 +24,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/users")
-    @Operation(summary = "Adding new user to the system", description = "All fields are mandatory to fii")
+    @Operation(summary = "Adding new user to the system", description = "All fields are mandatory")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "Username or e-mail not unique",

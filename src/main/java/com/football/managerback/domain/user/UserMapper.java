@@ -30,5 +30,5 @@ public interface UserMapper {
     @Mapping(source = "email", target = "email")
     @Mapping(source = "password", target = "password")
     @Mapping(constant = Status.ACTIVE, target = "status")
-    User toUserEntity(UserFullInfo userFullInfo);
+    User toUser(UserFullInfo userFullInfo);
 }
