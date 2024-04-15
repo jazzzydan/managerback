@@ -1,4 +1,4 @@
-package com.football.managerback.domain.club;
+package com.football.managerback.domain.club.country;
 
 import com.football.managerback.domain.club.confederation.Confederation;
 import jakarta.persistence.*;
@@ -26,5 +26,6 @@ public class Country {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
+
 
 }

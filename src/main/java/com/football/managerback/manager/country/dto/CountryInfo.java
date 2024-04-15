@@ -1,5 +1,6 @@
-package com.football.managerback.manager.club.dto;
+package com.football.managerback.manager.country.dto;
 
+import com.football.managerback.domain.club.country.Country;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -9,16 +10,15 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * DTO for {@link com.football.managerback.domain.club.Club}
+ * DTO for {@link Country}
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClubInfo implements Serializable {
+public class CountryInfo implements Serializable {
     private Integer id;
-    private Integer leagueId;
-    private Integer leagueCountryId;
+    private Integer confederationId;
     @NotNull
     @Size(max = 255)
-    private String club_name;
+    private String country_name;
 }

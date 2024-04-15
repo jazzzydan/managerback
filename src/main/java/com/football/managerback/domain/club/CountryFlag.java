@@ -1,6 +1,6 @@
 package com.football.managerback.domain.club;
 
-import com.football.managerback.domain.club.Country;
+import com.football.managerback.domain.club.country.Country;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
