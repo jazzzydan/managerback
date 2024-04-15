@@ -1,9 +1,7 @@
 package com.football.managerback.domain.club;
 
-import com.football.managerback.domain.club.Club;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
