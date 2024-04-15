@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ClubMapper {
     @Mapping(source = "id", target = "id")
-    @Mapping(source = "name", target = "name")
+    @Mapping(source = "name", target = "club_name")
     ClubInfo toClubInfo(Club club);
 
     List<ClubInfo> toClubInfos(List<Club> clubs);

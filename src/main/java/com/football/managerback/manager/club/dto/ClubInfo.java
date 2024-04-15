@@ -20,5 +20,5 @@ public class ClubInfo implements Serializable {
     private Integer leagueCountryId;
     @NotNull
     @Size(max = 255)
-    private String name;
+    private String club_name;
 }
