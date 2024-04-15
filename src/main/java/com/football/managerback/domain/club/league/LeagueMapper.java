@@ -8,9 +8,10 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface LeagueMapper {
 
-    @Mapping(source="id", target="Id")
-    @Mapping(source="name", target="LeagueName")
-    LeagueInfo toLeaguinfo(League league);
+    @Mapping(source="id", target="leagueId")
+    @Mapping(source="name", target="leagueName")
+
+    LeagueInfo toLeagueinfo(League league);
     List<LeagueInfo> toLeagueInfos(List<League> leagueInfos);
 
 
