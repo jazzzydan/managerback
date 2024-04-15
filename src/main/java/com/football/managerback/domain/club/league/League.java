@@ -1,4 +1,4 @@
-package com.football.managerback.domain.club;
+package com.football.managerback.domain.club.league;
 
 import com.football.managerback.domain.club.Country;
 import jakarta.persistence.*;
