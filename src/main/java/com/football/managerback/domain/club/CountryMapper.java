@@ -9,9 +9,9 @@ import java.util.List;
 public interface CountryMapper {
 
     @Mapping(source = "id", target = "id")
-    @Mapping(source = "name", target = "name")
-    Country toCountryInfo(Country country);
+    @Mapping(source = "name", target = "country_name")
+    CountryInfo toCountryInfo(Country country);
 
-    List<CountryInfo> toCountryInfos(List<Country>countries);
+    List<CountryInfo> toCountryInfos(List<Country> countries);
 
 }
