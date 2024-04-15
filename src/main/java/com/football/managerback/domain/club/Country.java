@@ -1,6 +1,5 @@
 package com.football.managerback.domain.club;
 
-import com.football.managerback.domain.club.Confederation;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -26,5 +25,6 @@ public class Country {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
+
 
 }
