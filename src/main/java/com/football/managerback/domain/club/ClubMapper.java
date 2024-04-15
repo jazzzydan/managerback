@@ -1,0 +1,15 @@
+package com.football.managerback.domain.club;
+
+import com.football.managerback.manager.club.dto.ClubInfo;
+import org.mapstruct.*;
+
+import java.util.List;
+
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
+public interface ClubMapper {
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "name", target = "name")
+    ClubInfo toClubInfo(Club club);
+
+    List<ClubInfo> toClubInfos(List<Club> clubs);
+}
