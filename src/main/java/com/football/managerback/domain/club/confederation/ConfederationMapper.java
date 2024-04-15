@@ -1,7 +1,6 @@
 package com.football.managerback.domain.club.confederation;
 
-import com.football.managerback.domain.club.confederation.Confederation;
-import com.football.managerback.manager.confederation.dto.ConfederationInfo;
+import com.football.managerback.manager.club.confederation.dto.ConfederationInfo;
 import org.mapstruct.*;
 
 import java.util.List;

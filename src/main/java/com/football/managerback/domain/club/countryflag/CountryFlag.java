@@ -1,18 +1,16 @@
-package com.football.managerback.domain.game;
+package com.football.managerback.domain.club.countryflag;
 
-import com.football.managerback.domain.club.Club;
+import com.football.managerback.domain.club.country.Country;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @Entity
-@Table(name = "game", schema = "manager")
-public class Game {
+@Table(name = "country_flag", schema = "manager")
+public class CountryFlag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -20,11 +18,11 @@ public class Game {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "home_club_id", nullable = false)
-    private Club homeClub;
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country country;
 
     @NotNull
-    @Column(name = "date", nullable = false)
-    private LocalDate date;
+    @Column(name = "image_data", nullable = false)
+    private byte[] imageData;
 
 }

@@ -1,9 +1,9 @@
 package com.football.managerback.domain.user;
 
 import com.football.managerback.manager.Status;
-import com.football.managerback.manager.login.dto.LoginResponse;
-import com.football.managerback.manager.user.dto.UserFullInfo;
-import com.football.managerback.manager.user.dto.UserInfo;
+import com.football.managerback.manager.user.login.dto.LoginResponse;
+import com.football.managerback.manager.user.user.dto.UserFullInfo;
+import com.football.managerback.manager.user.user.dto.UserInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;

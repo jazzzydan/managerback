@@ -1,7 +1,6 @@
 package com.football.managerback.domain.club.country;
 
-import com.football.managerback.domain.club.country.Country;
-import com.football.managerback.manager.country.dto.CountryInfo;
+import com.football.managerback.manager.club.country.dto.CountryInfo;
 import org.mapstruct.*;
 
 import java.util.List;
