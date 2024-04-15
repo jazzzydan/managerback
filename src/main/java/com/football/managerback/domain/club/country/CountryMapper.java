@@ -1,5 +1,6 @@
-package com.football.managerback.domain.club;
+package com.football.managerback.domain.club.country;
 
+import com.football.managerback.domain.club.country.Country;
 import com.football.managerback.manager.country.dto.CountryInfo;
 import org.mapstruct.*;
 

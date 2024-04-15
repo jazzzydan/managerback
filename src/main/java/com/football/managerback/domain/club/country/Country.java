@@ -1,5 +1,6 @@
-package com.football.managerback.domain.club;
+package com.football.managerback.domain.club.country;
 
+import com.football.managerback.domain.club.Confederation;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

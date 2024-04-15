@@ -1,8 +1,6 @@
 package com.football.managerback.manager.club;
 
 import com.football.managerback.domain.club.Club;
-import com.football.managerback.domain.club.ClubMapper;
-import com.football.managerback.domain.club.ClubRepository;
 import com.football.managerback.manager.club.dto.ClubInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

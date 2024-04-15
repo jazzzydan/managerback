@@ -1,5 +1,6 @@
 package com.football.managerback.domain.club;
 
+import com.football.managerback.domain.club.city.City;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

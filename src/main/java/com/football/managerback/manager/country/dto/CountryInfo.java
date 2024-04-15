@@ -1,5 +1,6 @@
 package com.football.managerback.manager.country.dto;
 
+import com.football.managerback.domain.club.country.Country;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * DTO for {@link com.football.managerback.domain.club.Country}
+ * DTO for {@link Country}
  */
 @Data
 @AllArgsConstructor

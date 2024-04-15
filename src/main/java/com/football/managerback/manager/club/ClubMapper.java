@@ -1,5 +1,6 @@
-package com.football.managerback.domain.club;
+package com.football.managerback.manager.club;
 
+import com.football.managerback.domain.club.Club;
 import com.football.managerback.manager.club.dto.ClubInfo;
 import org.mapstruct.*;
 
