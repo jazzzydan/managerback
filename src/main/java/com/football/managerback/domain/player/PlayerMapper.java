@@ -19,13 +19,4 @@ public interface PlayerMapper {
 
     List<PlayerInfo> toPlayerInfos(List<Player> players);
 
-    @Mapping(source = "id", target = "clubId")
-    @Mapping(source = "name", target = "clubName")
-    ClubInfo toClubInfo(Club club);
-
-    @Mapping(source = "birthDate",target = "birthDate")
-    @Mapping(source = "height",target = "height")
-    @Mapping(source = "weight",target = "weight")
-    @Mapping(source = "nationality",target = "nationality")
-    PlayerDetail toPlayerDetailInfo(PlayerDetail playerDetail);
 }
