@@ -8,8 +8,8 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CountryMapper {
 
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "name", target = "country_name")
+    @Mapping(source = "id", target = "countryId")
+    @Mapping(source = "name", target = "countryName")
     CountryInfo toCountryInfo(Country country);
 
     List<CountryInfo> toCountryInfos(List<Country> countries);
