@@ -109,6 +109,8 @@ CREATE TABLE player_details
     weight      int        NOT NULL,
     nationality varchar(3) NOT NULL,
     best_foot   char(1)    NOT NULL,
+
+
     CONSTRAINT player_details_pk PRIMARY KEY (id)
 );
 

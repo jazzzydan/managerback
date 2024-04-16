@@ -17,9 +17,16 @@ public class League {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country country;
+
     @Size(max = 255)
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
+
+
 
 }
