@@ -15,5 +15,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class LeagueInfo implements Serializable {
     private Integer leagueId;
+    private Integer countryId;
     private String leagueName;
 }

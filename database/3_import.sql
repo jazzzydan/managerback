@@ -82,12 +82,12 @@ INSERT INTO manager.country (id, confederation_id, name) VALUES (64, 3, 'Uruguay
 INSERT INTO manager.country (id, confederation_id, name) VALUES (65, 3, 'Venezuela');
 
 
-INSERT INTO manager.league (id, country_id, name) VALUES (default, 16, 'Meistriliiga');
-INSERT INTO manager.league (id, country_id, name) VALUES (default, 16, 'Esiliiga');
-INSERT INTO manager.league (id, country_id, name) VALUES (default, 16, 'Esiliiga B');
-INSERT INTO manager.league (id, country_id, name) VALUES (default, 16, 'II liiga');
-INSERT INTO manager.league (id, country_id, name) VALUES (default, 16, 'III liiga');
-INSERT INTO manager.league (id, country_id, name) VALUES (default, 16, 'IV liiga');
+INSERT INTO manager.league (id, country_id, name) VALUES (default, 15, 'Meistriliiga');
+INSERT INTO manager.league (id, country_id, name) VALUES (default, 15, 'Esiliiga');
+INSERT INTO manager.league (id, country_id, name) VALUES (default, 15, 'Esiliiga B');
+INSERT INTO manager.league (id, country_id, name) VALUES (default, 15, 'II liiga');
+INSERT INTO manager.league (id, country_id, name) VALUES (default, 15, 'III liiga');
+INSERT INTO manager.league (id, country_id, name) VALUES (default, 15, 'IV liiga');
 
 INSERT INTO manager.club (id, league_id, city_id, name) VALUES (default, 1, null, 'Tallinna FC Flora');
 INSERT INTO manager.club (id, league_id, city_id, name) VALUES (default, 1, null, 'FCI Tallinn');
