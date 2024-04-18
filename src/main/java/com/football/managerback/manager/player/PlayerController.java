@@ -1,6 +1,7 @@
 package com.football.managerback.manager.player;
 
 import com.football.managerback.manager.player.dto.PlayerInfo;
+import com.football.managerback.manager.player.dto.PlayerNameInfo;
 import com.football.managerback.manager.player.dto.PlayersRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,11 @@ public class PlayerController {
             description = "Returns detailed player data. POST service used to send JSON as payload for request (multiply dropdown handling)")
     public List<PlayerInfo> getPlayers(@RequestBody PlayersRequest playersRequest){
        return playerService.getPlayers(playersRequest);
+    }
+
+    @GetMapping("/players/{playerId}")
+    public List<PlayerNameInfo> listPlayers(@PathVariable Integer playerId) {
+        return playerService.listPlayers(playerId);
     }
 
     //todo: lisada ACTIVE statusega mängijate otsimine (hetkel kuvatakse kõik mängijad)

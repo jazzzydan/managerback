@@ -1,9 +1,7 @@
 package com.football.managerback.domain.player;
 
-import com.football.managerback.domain.club.Club;
-import com.football.managerback.domain.player.playerdetail.PlayerDetail;
-import com.football.managerback.manager.club.club.dto.ClubInfo;
 import com.football.managerback.manager.player.dto.PlayerInfo;
+import com.football.managerback.manager.player.dto.PlayerNameInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -19,4 +17,5 @@ public interface PlayerMapper {
 
     List<PlayerInfo> toPlayerInfos(List<Player> players);
 
+    List<PlayerNameInfo> toPlayerNameInfos(List<Player> players);
 }
