@@ -5,7 +5,9 @@ import com.football.managerback.domain.player.PlayerMapper;
 import com.football.managerback.domain.player.PlayerRepository;
 import com.football.managerback.domain.player.playerdetail.PlayerDetail;
 import com.football.managerback.domain.player.playerdetail.PlayerDetailRepository;
+import com.football.managerback.domain.player.playerdetail.dto.PlayerDetailInfo;
 import com.football.managerback.domain.player.playerobservation.PlayerObservationRepository;
+import com.football.managerback.infrastructure.validation.ValidationService;
 import com.football.managerback.manager.player.dto.PlayerInfo;
 import com.football.managerback.manager.player.dto.PlayersRequest;
 import com.football.managerback.util.DateConverter;
@@ -55,5 +57,15 @@ public class PlayerService {
         boolean observationExists = playerObservationRepository.playerObservationExists(playerInfo.getPlayerId());
         playerInfo.setObservationExists(observationExists);
     }
+    public void addNewPlayer(PlayerDetailInfo playerDetailInfo){
+        handlePlayerNameAvailabilityValidation(playerDetailInfo);
+
+    }
+
+    private void handlePlayerNameAvailabilityValidation(PlayerDetailInfo playerDetailInfo) {
+        boolean playerNameExists = playerRepository.playerNameExists(playerDetailInfo.getPlayerName());
+        ValidationService.validatePlayerNameAvailable(playerNameExists);
+    }
+
 
 }

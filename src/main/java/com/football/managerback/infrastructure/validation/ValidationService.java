@@ -27,4 +27,10 @@ public class ValidationService {
             throw new ForbiddenException(EMAIL_UNAVAILABLE.getMessage(), EMAIL_UNAVAILABLE.getErrorCode());
         }
     }
+
+    public static void validatePlayerNameAvailable(boolean playerNameExists) {
+        if (playerNameExists) {
+            throw new ForbiddenException(PLAYERNAME_UNAVAILABLE.getMessage(), PLAYERNAME_UNAVAILABLE.getErrorCode());
+        }
+    }
 }
