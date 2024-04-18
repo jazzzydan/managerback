@@ -22,6 +22,8 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
     @Query("select p from Player p where upper(p.name) like upper(concat('%', :playerName, '%'))")
     List<Player> searchPlayersBy(String playerName);
 
+    @Query("select p from Player p where ( p.id = :playerId or 0 = :playerId ) order by p.name")
+    List<Player> listPlayersBy(Integer playerId);
 
     @Query("select (count(p) > 0) from Player p where p.name = :playerName")
     boolean playerNameExists(String playerName);

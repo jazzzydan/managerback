@@ -36,6 +36,11 @@ public class PlayerController {
     public void addNewPlayer(@RequestBody @Valid PlayerDetailInfo playerDetailInfo) {
         playerService.addNewPlayer(playerDetailInfo);
     }
+
+    @GetMapping("/players/{playerId}")
+    public List<PlayerNameInfo> listPlayers(@PathVariable Integer playerId) {
+        return playerService.listPlayers(playerId);
+    }
 }
     //todo: lisada ACTIVE statusega mängijate otsimine (hetkel kuvatakse kõik mängijad)
     //todo: kuvada ainult need mängijad kes on sisselogitud scout'i observation'i all

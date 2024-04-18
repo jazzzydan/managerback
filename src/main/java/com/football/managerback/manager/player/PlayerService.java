@@ -9,6 +9,7 @@ import com.football.managerback.domain.player.playerobservation.PlayerObservatio
 import com.football.managerback.infrastructure.validation.ValidationService;
 import com.football.managerback.manager.player.dto.PlayerDetailInfo;
 import com.football.managerback.manager.player.dto.PlayerInfo;
+import com.football.managerback.manager.player.dto.PlayerNameInfo;
 import com.football.managerback.manager.player.dto.PlayersRequest;
 import com.football.managerback.util.DateConverter;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class PlayerService {
     private final PlayerMapper playerMapper;
 
 
-    public List<PlayerInfo> getPlayers (PlayersRequest request){
+    public List<PlayerInfo> getPlayers(PlayersRequest request) {
 
         List<Player> players;
         if (request.getPlayerName().isEmpty()) {
@@ -45,8 +46,14 @@ public class PlayerService {
         }
 
         return playerInfos;
-    
+
     }
+
+    public List<PlayerNameInfo> listPlayers(Integer playerId) {
+        List<Player> players = playerRepository.listPlayersBy(playerId);
+        return playerMapper.toPlayerNameInfos(players);
+    }
+
 
     private void addDetailedInfo(PlayerInfo playerInfo) {
         PlayerDetail playerDetail = playerDetailRepository.findPlayerDetailBy(playerInfo.getPlayerId());
