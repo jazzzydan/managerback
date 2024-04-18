@@ -25,11 +25,17 @@ public class PlayerService {
 
 
     public List<PlayerInfo> getPlayers (PlayersRequest request){
-        List<Player> players = playerRepository.findPlayersBy(
-                request.getConfederationId(),
-                request.getCountryId(),
-                request.getLeagueId(),
-                request.getClubId());
+
+        List<Player> players;
+        if (request.getPlayerName().isEmpty()) {
+            players = playerRepository.findPlayersBy(
+                    request.getConfederationId(),
+                    request.getCountryId(),
+                    request.getLeagueId(),
+                    request.getClubId());
+        } else {
+            players = playerRepository.searchPlayersBy(request.getPlayerName());
+        }
 
         List<PlayerInfo> playerInfos = playerMapper.toPlayerInfos(players);
         for (PlayerInfo playerInfo : playerInfos) {

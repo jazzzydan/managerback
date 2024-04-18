@@ -19,5 +19,9 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
                                Integer leagueId,
                                Integer clubId);
 
+    @Query("select p from Player p where upper(p.name) like upper(concat('%', :playerName, '%'))")
+    List<Player> searchPlayersBy(String playerName);
+
+
 
 }
