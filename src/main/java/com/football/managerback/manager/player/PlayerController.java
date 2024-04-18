@@ -3,6 +3,7 @@ package com.football.managerback.manager.player;
 import com.football.managerback.infrastructure.error.ApiError;
 import com.football.managerback.manager.player.dto.PlayerDetailInfo;
 import com.football.managerback.manager.player.dto.PlayerInfo;
+import com.football.managerback.manager.player.dto.PlayerNameInfo;
 import com.football.managerback.manager.player.dto.PlayersRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
