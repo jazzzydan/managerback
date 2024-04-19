@@ -49,8 +49,8 @@ public class PlayerService {
 
     }
 
-    public List<PlayerNameInfo> listPlayers(Integer playerId) {
-        List<Player> players = playerRepository.listPlayersBy(playerId);
+    public List<PlayerNameInfo> findAllPlayers() {
+        List<Player> players = playerRepository.findAllPlayers();
         return playerMapper.toPlayerNameInfos(players);
     }
 

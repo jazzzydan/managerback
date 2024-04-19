@@ -11,6 +11,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 public class PlayerNameInfo implements Serializable {
-    private Integer id;
-    private String name;
+    private Integer playerId;
+    private String playerName;
 }
