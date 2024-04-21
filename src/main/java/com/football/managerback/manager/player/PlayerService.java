@@ -7,6 +7,7 @@ import com.football.managerback.domain.player.playerdetail.PlayerDetail;
 import com.football.managerback.domain.player.playerdetail.PlayerDetailRepository;
 import com.football.managerback.domain.player.playerobservation.PlayerObservationRepository;
 import com.football.managerback.infrastructure.validation.ValidationService;
+import com.football.managerback.manager.Status;
 import com.football.managerback.manager.player.dto.PlayerDetailInfo;
 import com.football.managerback.manager.player.dto.PlayerInfo;
 import com.football.managerback.manager.player.dto.PlayerNameInfo;
@@ -72,6 +73,12 @@ public class PlayerService {
     private void handlePlayerNameAvailabilityValidation(PlayerDetailInfo playerDetailInfo) {
         boolean playerNameExists = playerRepository.playerNameExists(playerDetailInfo.getPlayerName());
         ValidationService.validatePlayerNameAvailable(playerNameExists);
+    }
+
+    public void removePlayer(Integer playerId) {
+        Player player = playerRepository.getReferenceById(playerId);
+        player.setStatus(Status.DEACTIVATED);
+        playerRepository.save(player);
     }
 
 

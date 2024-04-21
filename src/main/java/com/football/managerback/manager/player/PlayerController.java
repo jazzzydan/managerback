@@ -42,9 +42,22 @@ public class PlayerController {
     public List<PlayerNameInfo> findAllPlayers() {
         return playerService.findAllPlayers();
     }
+
+    @DeleteMapping("/player/{playerId}")
+    @Operation(summary = "Player removal by playerId",
+            description = "Really just player de-activation in DB")
+    public void removePlayer(@PathVariable Integer playerId) {
+    playerService.removePlayer(playerId);
+
+    }
 }
+
+
     //todo: lisada ACTIVE statusega mängijate otsimine (hetkel kuvatakse kõik mängijad)
     //todo: kuvada ainult need mängijad kes on sisselogitud scout'i observation'i all
+
+
+
 
 
 
