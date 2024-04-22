@@ -1,11 +1,13 @@
 package com.football.managerback.domain.player;
 
+import com.football.managerback.domain.player.playerdetail.PlayerDetail;
+import com.football.managerback.manager.Status;
+import com.football.managerback.manager.player.dto.PlayerDetailInfo;
 import com.football.managerback.manager.player.dto.PlayerInfo;
 import com.football.managerback.manager.player.dto.PlayerNameInfo;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.ReportingPolicy;
+import com.football.managerback.manager.player.dto.PlayersRequest;
+import org.apache.catalina.Manager;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -23,4 +25,9 @@ public interface PlayerMapper {
     PlayerNameInfo toPlayerNameInfo(Player players);
 
     List<PlayerNameInfo> toPlayerNameInfos(List<Player> players);
+
+    @Mapping(source = "playerName", target = "name")
+    @Mapping(constant = Status.ACTIVE, target = "status")
+    Player toPlayer(PlayerDetailInfo playerDetailInfo);
+
 }
