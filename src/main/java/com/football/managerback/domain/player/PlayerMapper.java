@@ -19,6 +19,11 @@ public interface PlayerMapper {
 
     List<PlayerInfo> toPlayerInfos(List<Player> players);
 
+
+    @Mapping(source = "id", target = "playerId")
+    @Mapping(source = "name", target = "playerName")
+    PlayerNameInfo toPlayerNameInfo(Player players);
+
     List<PlayerNameInfo> toPlayerNameInfos(List<Player> players);
 
     @Mapping(source = "playerName", target = "name")

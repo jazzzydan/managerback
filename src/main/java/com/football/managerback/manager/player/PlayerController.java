@@ -39,9 +39,9 @@ public class PlayerController {
         playerService.addNewPlayer(playerDetailInfo);
     }
 
-    @GetMapping("/players/{playerId}")
-    public List<PlayerNameInfo> listPlayers(@PathVariable Integer playerId) {
-        return playerService.listPlayers(playerId);
+    @GetMapping("/players/all")
+    public List<PlayerNameInfo> findAllPlayers() {
+        return playerService.findAllPlayers();
     }
 }
     //todo: lisada ACTIVE statusega mängijate otsimine (hetkel kuvatakse kõik mängijad)
