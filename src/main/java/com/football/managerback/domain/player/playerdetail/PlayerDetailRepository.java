@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PlayerDetailRepository extends JpaRepository<PlayerDetail, Integer> {
 
-
     @Query("select p from PlayerDetail p where p.player.id = :playerId")
     PlayerDetail findPlayerDetailBy(Integer playerId);
+
 }

@@ -18,11 +18,12 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("player")
 public class PlayerController {
     private PlayerService playerService;
 
     @PostMapping("/players")
-    @Operation(
+     @Operation(
             summary = "Finds all players data who's status is ACTIVE.",
             description = "Returns detailed player data. POST service used to send JSON as payload for request (multiply dropdown handling)")
     public List<PlayerInfo> getPlayers(@RequestBody PlayersRequest playersRequest) {
@@ -30,11 +31,11 @@ public class PlayerController {
     }
 
     @PostMapping("/player")
-    @Operation(summary = "Add new player.", description = "If playerId is null")
+    @Operation(summary = "Add new player.", description = "If player name is available")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "Sellise nimega mängija on juba olemas", content = @Content(schema = @Schema(implementation = ApiError.class)))})
-    public void addNewPlayer(@RequestBody @Valid PlayerDetailInfo playerDetailInfo) {
+    public void addNewPlayer(@RequestBody @Valid  PlayerDetailInfo playerDetailInfo) {
         playerService.addNewPlayer(playerDetailInfo);
     }
 
