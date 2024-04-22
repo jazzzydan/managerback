@@ -264,3 +264,9 @@ INSERT INTO manager.player_details (id, player_id, gender, age, birth_date, heig
 INSERT INTO manager.player_details (id, player_id, gender, age, birth_date, height, weight, nationality, best_foot) VALUES (default, 18, 'M', 27, '1994-07-11', 174, 71, 'POR', 'R');
 INSERT INTO manager.player_details (id, player_id, gender, age, birth_date, height, weight, nationality, best_foot) VALUES (default, 19, 'M', 28, '1993-01-24', 185, 80, 'BEL', 'L');
 INSERT INTO manager.player_details (id, player_id, gender, age, birth_date, height, weight, nationality, best_foot) VALUES (default, 20, 'M', 29, '1992-04-15', 182, 78, 'SEN', 'R');
+
+
+INSERT INTO manager.game (id, home_club_id, away_club_id, date) VALUES (default, 1, 2, '2024-04-24');
+INSERT INTO manager.game (id, home_club_id, away_club_id, date) VALUES (default, 2, 3, '2024-04-24');
+INSERT INTO manager.game (id, home_club_id, away_club_id, date) VALUES (default, 2, 1, '2024-04-24');
+INSERT INTO manager.game (id, home_club_id, away_club_id, date) VALUES (default, 3, 2, '2024-04-24');

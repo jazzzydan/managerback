@@ -18,10 +18,16 @@ public class Game {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "home_club_id", nullable = false)
     private Club homeClub;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "away_club_id", nullable = false)
+    private Club awayClub;
 
     @NotNull
     @Column(name = "date", nullable = false)

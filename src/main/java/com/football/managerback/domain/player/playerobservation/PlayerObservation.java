@@ -1,10 +1,11 @@
 package com.football.managerback.domain.player.playerobservation;
 
+import com.football.managerback.domain.game.Game;
 import com.football.managerback.domain.player.Player;
 import com.football.managerback.domain.user.User;
-import com.football.managerback.domain.game.Game;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +20,7 @@ public class PlayerObservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
+
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -86,5 +88,9 @@ public class PlayerObservation {
 
     @Column(name = "minutes")
     private Integer minutes;
+
+    @Size(max = 255)
+    @Column(name = "comment")
+    private String comment;
 
 }
