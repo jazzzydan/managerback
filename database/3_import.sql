@@ -4,10 +4,6 @@ INSERT INTO manager.role (id, name) VALUES (default, 'scout');
 INSERT INTO manager.role (id, name) VALUES (default, 'admin');
 INSERT INTO manager.role (id, name) VALUES (default, 'coach');
 
-INSERT INTO manager."user" (id, role_id, username, email, password, status) VALUES (default, 3, 'daniil', 'na', '123', 'A');
-INSERT INTO manager."user" (id, role_id, username, email, password, status) VALUES (default, 2, 'kevin', 'na', '123', 'A');
-INSERT INTO manager."user" (id, role_id, username, email, password, status) VALUES (default, 2, 'uve', 'na', '123', 'A');
-
 INSERT INTO manager.confederation (id, name, description) VALUES (default, 'UEFA', 'Union of European Football Associations');
 INSERT INTO manager.confederation (id, name, description) VALUES (default, 'CONCACAF', 'Confederation of North, Central American and Caribbean Association Football');
 INSERT INTO manager.confederation (id, name, description) VALUES (default, 'CONMEBOL', 'Confederación Sudamericana de Fútbol');
