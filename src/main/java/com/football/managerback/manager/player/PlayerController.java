@@ -14,6 +14,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
@@ -47,7 +48,7 @@ public class PlayerController {
     @Operation(summary = "Player removal by playerId",
             description = "Really just player de-activation in DB")
     public void removePlayer(@PathVariable Integer playerId) {
-    playerService.removePlayer(playerId);
+        playerService.removePlayer(playerId);
 
     }
 }
