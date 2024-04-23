@@ -10,6 +10,7 @@ import com.football.managerback.domain.player.playerdetail.PlayerDetailMapper;
 import com.football.managerback.domain.player.playerdetail.PlayerDetailRepository;
 import com.football.managerback.domain.player.playerobservation.PlayerObservationRepository;
 import com.football.managerback.infrastructure.validation.ValidationService;
+import com.football.managerback.manager.Status;
 import com.football.managerback.manager.player.dto.PlayerDetailInfo;
 import com.football.managerback.manager.player.dto.PlayerInfo;
 import com.football.managerback.manager.player.dto.PlayerNameInfo;
@@ -18,6 +19,7 @@ import com.football.managerback.util.DateConverter;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -102,6 +104,12 @@ public class PlayerService {
         Player player = playerMapper.toPlayer(playerDetailInfo);
         player.setClub(club);
         return player;
+    }
+
+    public void removePlayer(Integer playerId) {
+        Player player = playerRepository.getReferenceById(playerId);
+        player.setStatus(Status.DEACTIVATED);
+        playerRepository.save(player);
     }
 
 }
