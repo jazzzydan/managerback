@@ -10,10 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,7 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
+
 
     @PostMapping("/users")
     @Operation(summary = "Adding new user to the system", description = "All fields are mandatory")
@@ -40,4 +38,13 @@ public class UserController {
     public List<UserInfo> getUsers() {
         return userService.getUsers();
     }
+
+    @DeleteMapping("/users/{userId}")
+    @Operation(summary = "User removal by userId",
+            description = "user status change to D in DB")
+    public void removeUser(@PathVariable Integer userId) {
+        userService.removeUser(userId);
+    }
+
 }
+

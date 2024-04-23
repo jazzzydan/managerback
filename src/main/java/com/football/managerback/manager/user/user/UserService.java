@@ -1,5 +1,7 @@
 package com.football.managerback.manager.user.user;
 
+import com.football.managerback.domain.player.Player;
+import com.football.managerback.domain.player.PlayerRepository;
 import com.football.managerback.domain.user.*;
 import com.football.managerback.domain.user.role.Role;
 import com.football.managerback.domain.user.role.RoleRepository;
@@ -18,8 +20,8 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-
     private final UserMapper userMapper;
+
 
     public List<UserInfo> getUsers() {
         List<User> users = userRepository.findUsersBy(Status.ACTIVE);
@@ -53,4 +55,11 @@ public class UserService {
         user.setRole(role);
         return user;
     }
+
+    public void removeUser(Integer userId) {
+        User user = userRepository.getReferenceById(userId);
+        user.setStatus(Status.DEACTIVATED);
+        userRepository.save(user);
+    }
+
 }
