@@ -46,7 +46,7 @@ public class PlayerController {
 
     @DeleteMapping("/player/{playerId}")
     @Operation(summary = "Player removal by playerId",
-            description = "Really just player de-activation in DB")
+            description = "player status change to D in DB")
     public void removePlayer(@PathVariable Integer playerId) {
         playerService.removePlayer(playerId);
 
