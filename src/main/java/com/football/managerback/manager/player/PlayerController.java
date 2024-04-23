@@ -31,10 +31,11 @@ public class PlayerController {
     }
 
     @PostMapping("/player")
-    @Operation(summary = "Add new player.", description = "If player name is available")
+    @Operation(summary = "Add new player.", description = "if player name is available")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "403", description = "Sellise nimega mängija on juba olemas", content = @Content(schema = @Schema(implementation = ApiError.class)))})
+            @ApiResponse(responseCode = "403", description = "Sellise nimega mängija on juba olemas",
+                    content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public void addNewPlayer(@RequestBody @Valid  PlayerDetailInfo playerDetailInfo) {
         playerService.addNewPlayer(playerDetailInfo);
     }

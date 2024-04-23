@@ -31,12 +31,10 @@ public class PlayerService {
     private final PlayerRepository playerRepository;
     private final PlayerDetailRepository playerDetailRepository;
     private final PlayerObservationRepository playerObservationRepository;
+    private final ClubRepository clubRepository;
 
     private final PlayerMapper playerMapper;
     private final PlayerDetailMapper playerDetailMapper;
-
-    private final ClubRepository clubRepository;
-
 
     public List<PlayerInfo> getPlayers(PlayersRequest request) {
 
