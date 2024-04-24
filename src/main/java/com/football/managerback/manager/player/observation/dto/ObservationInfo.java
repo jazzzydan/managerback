@@ -1,4 +1,4 @@
-package com.football.managerback.manager.observation.dto;
+package com.football.managerback.manager.player.observation.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class ObservationInfo implements Serializable {
-    private Integer payerObservationId;
+    private Integer playerObservationId;
     private String date;
     private String gameHomeClubName;
     private String gameAwayClubName;
