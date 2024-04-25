@@ -83,6 +83,16 @@ public class PlayerService {
         playerDetailRepository.save(playerDetail);
     }
 
+    @Transactional
+    public PlayerDetailInfo updatePlayer(Integer playerId, PlayerDetailInfo playerDetailInfo) {
+        handlePlayerNameAvailabilityValidation(playerDetailInfo);
+        PlayerDetail playerDetail = playerDetailRepository.getReferenceById(playerId);
+        playerDetailMapper.updatePlayer(playerDetailInfo, playerDetail);
+        playerDetailRepository.save(playerDetail);
+
+        return null;
+    }
+
     private PlayerDetail createNewPlayerDetail(PlayerDetailInfo playerDetailInfo) {
         PlayerDetail playerDetail = playerDetailMapper.toPlayerDetail(playerDetailInfo);
         LocalDate dateOfBirth = playerDetailInfo.getBirthDate();
@@ -111,11 +121,5 @@ public class PlayerService {
     }
 
 
-    public PlayerInfo getPlayerDetailInfoById(Integer playerId) {
-        PlayerDetail playerDetail = playerDetailRepository.getReferenceById(playerId);
-        PlayerInfo playerInfo = playerDetailMapper.toPlayerInfo(playerDetail);
-        playerInfo.setObservationExists(playerObservationRepository.playerObservationExists(playerId));
-        return playerInfo;
 
-    }
 }

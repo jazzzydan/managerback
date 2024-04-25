@@ -52,9 +52,16 @@ public class PlayerController {
 
     }
 
-    @GetMapping("/players/{playerId}")
+    @GetMapping("/player/{playerId}")
+    @Operation(summary = "Get Player removal by playerId",
+            description = "player status change to D in DB")
     public PlayerInfo getPlayerDetailInfo(@PathVariable Integer playerId){
         return playerService.getPlayerDetailInfoById(playerId);
+    }
+
+    @PutMapping("/players/{playerId}")
+    public PlayerDetailInfo updatePlayerDetailInfo(@PathVariable Integer playerId, @RequestBody PlayerDetailInfo playerDetail) {
+        return playerService.updatePlayer(playerId, playerDetail);
     }
 
 }

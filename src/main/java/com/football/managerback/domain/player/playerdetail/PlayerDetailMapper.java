@@ -31,6 +31,19 @@ public interface PlayerDetailMapper {
     @Mapping(source = "weight", target = "weight")
     PlayerInfo toPlayerInfo(PlayerDetail playerDetail);
 
+
+
+    @Mapping(source = "gender", target = "gender")
+    @Mapping(source = "birthDate", target = "birthDate", qualifiedByName = "stringToLocalDate")
+    @Mapping(source = "height", target = "height")
+    @Mapping(source = "weight", target = "weight")
+    @Mapping(source = "nationality", target = "nationality")
+    @Mapping(source = "bestFoot", target = "bestFoot")
+    PlayerDetail updatePlayer(PlayerDetailInfo playerDetailInfo, @MappingTarget PlayerDetail playerDetail);
+
+
+
+
     @Named("localDateToString")
     static String localDateToString(LocalDate localDate) {
         return DateConverter.localDateToString(localDate);
