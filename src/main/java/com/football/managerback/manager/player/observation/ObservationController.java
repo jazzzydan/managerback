@@ -2,12 +2,10 @@ package com.football.managerback.manager.player.observation;
 
 import com.football.managerback.manager.player.observation.dto.ObservationDetailedInfo;
 import com.football.managerback.manager.player.observation.dto.ObservationInfo;
+import com.football.managerback.manager.player.observation.dto.ObservationUpdateInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +27,12 @@ public class ObservationController {
     description = "Returns desired observation")
     public ObservationDetailedInfo getObservation(@PathVariable Integer observationId) {
         return observationService.getObservation(observationId);
+    }
+
+    @PutMapping("/observation/{observationId}")
+    @Operation(summary = "Update existing observation",
+    description = "Observation date is mandatory field")
+    public void updateObservation(@PathVariable Integer observationId, @RequestBody ObservationUpdateInfo observationUpdateInfo) {
+        observationService.updateObservation(observationId, observationUpdateInfo);
     }
 }
