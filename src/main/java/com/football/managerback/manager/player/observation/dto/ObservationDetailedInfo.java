@@ -23,7 +23,7 @@ public class ObservationDetailedInfo implements Serializable {
     private Integer userId;
     private Integer playerId;
     private String observationDate;
-    private String observationPosition;
+    private Integer observationPositionId;
     private Integer marking;
     private Integer setPieces;
     private Integer technique;

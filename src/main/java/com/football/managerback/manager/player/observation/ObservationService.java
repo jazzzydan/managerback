@@ -35,7 +35,7 @@ public class ObservationService {
         ObservationDetailedInfo observationDetailedInfo = playerObservationMapper.toObservationDetailedInfo(playerObservation);
 
         ObservationPosition observationPosition = observationPositionRepository.findObservationPositionBy(observationId);
-        observationDetailedInfo.setObservationPosition(observationPosition.getPosition().getCode());
+        observationDetailedInfo.setObservationPositionId(observationPosition.getPosition().getId());
 
         return observationDetailedInfo;
     }
