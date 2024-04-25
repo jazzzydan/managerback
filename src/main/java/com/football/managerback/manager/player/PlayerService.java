@@ -84,7 +84,7 @@ public class PlayerService {
     }
 
     private PlayerDetail createNewPlayerDetail(PlayerDetailInfo playerDetailInfo) {
-        PlayerDetail playerDetail = playerDetailMapper.toPlayerDetailInfo(playerDetailInfo);
+        PlayerDetail playerDetail = playerDetailMapper.toPlayerDetail(playerDetailInfo);
         LocalDate dateOfBirth = playerDetailInfo.getBirthDate();
         Period age = Period.between(dateOfBirth, LocalDate.now());
         int ageInYears = age.getYears();
@@ -104,4 +104,11 @@ public class PlayerService {
         return player;
     }
 
+    public PlayerInfo getPlayerDetailInfoById(Integer playerId) {
+        PlayerDetail playerDetail = playerDetailRepository.getReferenceById(playerId);
+        PlayerInfo playerInfo = playerDetailMapper.toPlayerInfo(playerDetail);
+        playerInfo.setObservationExists(playerObservationRepository.playerObservationExists(playerId));
+        return playerInfo;
+
+    }
 }
