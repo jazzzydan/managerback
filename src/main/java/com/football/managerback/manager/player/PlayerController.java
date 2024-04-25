@@ -53,9 +53,9 @@ public class PlayerController {
     }
 
     @GetMapping("/player/{playerId}")
-    @Operation(summary = "Get Player removal by playerId",
+    @Operation(summary = "Leiab mängijaId abil ülesse mängija info",
             description = "player status change to D in DB")
-    public PlayerInfo getPlayerDetailInfo(@PathVariable Integer playerId){
+    public PlayerDetailInfo getPlayerDetailInfo(@PathVariable Integer playerId){
         return playerService.getPlayerDetailInfoById(playerId);
     }
 

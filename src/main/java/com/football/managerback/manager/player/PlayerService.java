@@ -87,7 +87,7 @@ public class PlayerService {
     public PlayerDetailInfo updatePlayer(Integer playerId, PlayerDetailInfo playerDetailInfo) {
         handlePlayerNameAvailabilityValidation(playerDetailInfo);
         PlayerDetail playerDetail = playerDetailRepository.getReferenceById(playerId);
-        playerDetailMapper.updatePlayer(playerDetailInfo, playerDetail);
+        playerDetailMapper.toUpdatePlayer(playerDetailInfo, playerDetail);
         playerDetailRepository.save(playerDetail);
 
         return null;
@@ -120,6 +120,11 @@ public class PlayerService {
         playerRepository.save(player);
     }
 
+    public PlayerDetailInfo getPlayerDetailInfoById(Integer playerId) {
+        PlayerDetail playerDetail = playerDetailRepository.getReferenceById(playerId);
+        PlayerDetailInfo playerDetailInfo = playerDetailMapper.toPlayerDetailInfo(playerDetail);
+        return playerDetailInfo;
+    }
 
 
 }

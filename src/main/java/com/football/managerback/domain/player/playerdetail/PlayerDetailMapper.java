@@ -3,7 +3,6 @@ package com.football.managerback.domain.player.playerdetail;
 import com.football.managerback.manager.player.dto.PlayerDetailInfo;
 import com.football.managerback.manager.player.dto.PlayerInfo;
 import com.football.managerback.util.DateConverter;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.mapstruct.*;
 
 import java.time.LocalDate;
@@ -20,18 +19,14 @@ public interface PlayerDetailMapper {
     PlayerDetail toPlayerDetail(PlayerDetailInfo playerDetailInfo);
 
 
-
-
-
-    @Mapping(source = "player.id", target = "playerId")
+    @Mapping(source = "bestFoot", target = "bestFoot")
     @Mapping(source = "player.name", target = "playerName")
+    @Mapping(source = "gender", target = "gender")
     @Mapping(source = "nationality", target = "nationality")
     @Mapping(source = "birthDate", target = "birthDate", qualifiedByName = "localDateToString")
     @Mapping(source = "height", target = "height")
     @Mapping(source = "weight", target = "weight")
-    PlayerInfo toPlayerInfo(PlayerDetail playerDetail);
-
-
+    PlayerDetailInfo toPlayerDetailInfo(PlayerDetail playerDetail);
 
     @Mapping(source = "gender", target = "gender")
     @Mapping(source = "birthDate", target = "birthDate", qualifiedByName = "stringToLocalDate")
@@ -39,7 +34,7 @@ public interface PlayerDetailMapper {
     @Mapping(source = "weight", target = "weight")
     @Mapping(source = "nationality", target = "nationality")
     @Mapping(source = "bestFoot", target = "bestFoot")
-    PlayerDetail updatePlayer(PlayerDetailInfo playerDetailInfo, @MappingTarget PlayerDetail playerDetail);
+    void toUpdatePlayer(PlayerDetailInfo playerDetailInfo, @MappingTarget PlayerDetail playerDetail);
 
 
 
