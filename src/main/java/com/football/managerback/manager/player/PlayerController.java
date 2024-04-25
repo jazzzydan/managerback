@@ -14,7 +14,6 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 
 @RestController
@@ -52,6 +51,12 @@ public class PlayerController {
         playerService.removePlayer(playerId);
 
     }
+
+    @GetMapping("/players/{playerId}")
+    public PlayerInfo findPlayerDetailInfo(@PathVariable Integer playerId){
+        return playerService.getPlayerDetailInfoById(playerId);
+    }
+
 }
 
 
