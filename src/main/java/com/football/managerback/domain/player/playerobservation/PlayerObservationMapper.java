@@ -1,6 +1,7 @@
 package com.football.managerback.domain.player.playerobservation;
 
-import com.football.managerback.manager.observation.dto.ObservationInfo;
+import com.football.managerback.manager.player.observation.dto.ObservationDetailedInfo;
+import com.football.managerback.manager.player.observation.dto.ObservationInfo;
 import com.football.managerback.util.DateConverter;
 import org.mapstruct.*;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public interface PlayerObservationMapper {
 
 
-    @Mapping(source = "id", target = "payerObservationId")
+    @Mapping(source = "id", target = "playerObservationId")
     @Mapping(source = "date", target = "date", qualifiedByName = "localDateToString")
     @Mapping(source = "game.homeClub.name", target = "gameHomeClubName")
     @Mapping(source = "game.awayClub.name", target = "gameAwayClubName")
@@ -20,8 +21,38 @@ public interface PlayerObservationMapper {
 
     List<ObservationInfo> toObservationInfos(List<PlayerObservation> playerObservation);
 
+    @Mapping(source = "id", target = "observationId")
+    @Mapping(source = "game.id", target = "gameId")
+    @Mapping(source = "game.date", target = "gameDate", qualifiedByName = "localDateToString")
+    @Mapping(source = "game.homeClub.name", target = "gameHomeClubName")
+    @Mapping(source = "game.awayClub.name", target = "gameAwayClubName")
+    @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "player.id", target = "playerId")
+    @Mapping(source = "date", target = "observationDate", qualifiedByName = "localDateToString")
+//    todo: observationPosition Mapping korda teha
+//    @Mapping(source = "", target = "observationPosition")
+    @Mapping(source = "marking", target = "marking")
+    @Mapping(source = "setPieces", target = "setPieces")
+    @Mapping(source = "technique", target = "technique")
+    @Mapping(source = "heading", target = "heading")
+    @Mapping(source = "passing", target = "passing")
+    @Mapping(source = "agression", target = "agression")
+    @Mapping(source = "decisions", target = "decisions")
+    @Mapping(source = "teamwork", target = "teamwork")
+    @Mapping(source = "acceleration", target = "acceleration")
+    @Mapping(source = "pace", target = "pace")
+    @Mapping(source = "stamina", target = "stamina")
+    @Mapping(source = "strenght", target = "strenght")
+    @Mapping(source = "goals", target = "goals")
+    @Mapping(source = "assists", target = "assists")
+    @Mapping(source = "cards", target = "cards")
+    @Mapping(source = "minutes", target = "minutes")
+    @Mapping(source = "comment", target = "comment")
+    ObservationDetailedInfo toObservationDetailedInfo(PlayerObservation playerObservation);
+
     @Named("localDateToString")
     static String localDateToString(LocalDate date) {
         return DateConverter.localDateToString(date);
     }
+
 }

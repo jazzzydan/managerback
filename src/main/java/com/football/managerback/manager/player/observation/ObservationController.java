@@ -1,10 +1,13 @@
-package com.football.managerback.manager.observation;
+package com.football.managerback.manager.player.observation;
 
-import com.football.managerback.manager.observation.dto.ObservationDetailedInfo;
-import com.football.managerback.manager.observation.dto.ObservationInfo;
+import com.football.managerback.manager.player.observation.dto.ObservationDetailedInfo;
+import com.football.managerback.manager.player.observation.dto.ObservationInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 

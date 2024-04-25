@@ -13,4 +13,6 @@ public interface PlayerObservationRepository extends JpaRepository<PlayerObserva
     @Query("select p from PlayerObservation p where p.user.id = :userId and (p.player.id = :playerId or 0 = :playerId) order by p.date DESC")
     List<PlayerObservation> findObservationsBy(Integer userId, Integer playerId);
 
+
+
 }
