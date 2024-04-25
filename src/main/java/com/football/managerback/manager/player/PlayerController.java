@@ -53,7 +53,7 @@ public class PlayerController {
     }
 
     @GetMapping("/players/{playerId}")
-    public PlayerInfo findPlayerDetailInfo(@PathVariable Integer playerId){
+    public PlayerInfo getPlayerDetailInfo(@PathVariable Integer playerId){
         return playerService.getPlayerDetailInfoById(playerId);
     }
 
