@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * DTO for {@link com.football.managerback.domain.player.playerobservation.PlayerObservation}
@@ -22,7 +23,7 @@ public class ObservationDetailedInfo implements Serializable {
     private String gameDate;
     private Integer userId;
     private Integer playerId;
-    private String observationDate;
+    private LocalDate observationDate;
     private Integer observationPositionId;
     private Integer marking;
     private Integer setPieces;

@@ -28,9 +28,7 @@ public interface PlayerObservationMapper {
     @Mapping(source = "game.awayClub.name", target = "gameAwayClubName")
     @Mapping(source = "user.id", target = "userId")
     @Mapping(source = "player.id", target = "playerId")
-    @Mapping(source = "date", target = "observationDate", qualifiedByName = "localDateToString")
-//    todo: observationPosition Mapping korda teha
-//    @Mapping(source = "", target = "observationPosition")
+    @Mapping(source = "date", target = "observationDate")
     @Mapping(source = "marking", target = "marking")
     @Mapping(source = "setPieces", target = "setPieces")
     @Mapping(source = "technique", target = "technique")
