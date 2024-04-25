@@ -10,6 +10,7 @@ import com.football.managerback.domain.player.playerdetail.PlayerDetailMapper;
 import com.football.managerback.domain.player.playerdetail.PlayerDetailRepository;
 import com.football.managerback.domain.player.playerobservation.PlayerObservationRepository;
 import com.football.managerback.infrastructure.validation.ValidationService;
+import com.football.managerback.manager.Status;
 import com.football.managerback.manager.player.dto.PlayerDetailInfo;
 import com.football.managerback.manager.player.dto.PlayerInfo;
 import com.football.managerback.manager.player.dto.PlayerNameInfo;
@@ -18,6 +19,7 @@ import com.football.managerback.util.DateConverter;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -29,12 +31,10 @@ public class PlayerService {
     private final PlayerRepository playerRepository;
     private final PlayerDetailRepository playerDetailRepository;
     private final PlayerObservationRepository playerObservationRepository;
+    private final ClubRepository clubRepository;
 
     private final PlayerMapper playerMapper;
     private final PlayerDetailMapper playerDetailMapper;
-
-    private final ClubRepository clubRepository;
-
 
     public List<PlayerInfo> getPlayers(PlayersRequest request) {
 
@@ -103,6 +103,13 @@ public class PlayerService {
         player.setClub(club);
         return player;
     }
+
+    public void removePlayer(Integer playerId) {
+        Player player = playerRepository.getReferenceById(playerId);
+        player.setStatus(Status.DEACTIVATED);
+        playerRepository.save(player);
+    }
+
 
     public PlayerInfo getPlayerDetailInfoById(Integer playerId) {
         PlayerDetail playerDetail = playerDetailRepository.getReferenceById(playerId);

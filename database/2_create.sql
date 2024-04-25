@@ -53,6 +53,7 @@ CREATE TABLE game
 (
     id           serial NOT NULL,
     home_club_id int    NOT NULL,
+    away_club_id int    NOT NULL,
     date         date   NOT NULL,
     CONSTRAINT game_pk PRIMARY KEY (id)
 );
@@ -138,6 +139,7 @@ CREATE TABLE player_observation
     assists      int    NULL,
     cards        int    NULL,
     minutes      int    NULL,
+    comment      varchar(255)    NULL,
     CONSTRAINT player_observation_pk PRIMARY KEY (id)
 );
 
@@ -219,6 +221,14 @@ ALTER TABLE country_flag
 ALTER TABLE game
     ADD CONSTRAINT game_club_home
         FOREIGN KEY (home_club_id)
+            REFERENCES club (id)
+            NOT DEFERRABLE
+                INITIALLY IMMEDIATE
+;
+-- Reference: game_club_home (table: game)
+ALTER TABLE game
+    ADD CONSTRAINT game_club_away
+        FOREIGN KEY (away_club_id)
             REFERENCES club (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE

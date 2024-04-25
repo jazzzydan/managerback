@@ -30,10 +30,11 @@ public class PlayerController {
     }
 
     @PostMapping("/player")
-    @Operation(summary = "Add new player.", description = "If player name is available")
+    @Operation(summary = "Add new player.", description = "if player name is available")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "403", description = "Sellise nimega mängija on juba olemas", content = @Content(schema = @Schema(implementation = ApiError.class)))})
+            @ApiResponse(responseCode = "403", description = "Sellise nimega mängija on juba olemas",
+                    content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public void addNewPlayer(@RequestBody @Valid  PlayerDetailInfo playerDetailInfo) {
         playerService.addNewPlayer(playerDetailInfo);
     }
@@ -42,15 +43,28 @@ public class PlayerController {
     public List<PlayerNameInfo> findAllPlayers() {
         return playerService.findAllPlayers();
     }
+
+    @DeleteMapping("/player/{playerId}")
+    @Operation(summary = "Player removal by playerId",
+            description = "player status change to D in DB")
+    public void removePlayer(@PathVariable Integer playerId) {
+        playerService.removePlayer(playerId);
+
+    }
+
     @GetMapping("/players/{playerId}")
     public PlayerInfo findPlayerDetailInfo(@PathVariable Integer playerId){
         return playerService.getPlayerDetailInfoById(playerId);
     }
+
 }
 
 
     //todo: lisada ACTIVE statusega mängijate otsimine (hetkel kuvatakse kõik mängijad)
     //todo: kuvada ainult need mängijad kes on sisselogitud scout'i observation'i all
+
+
+
 
 
 
