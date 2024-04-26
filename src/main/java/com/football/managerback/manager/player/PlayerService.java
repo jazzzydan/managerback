@@ -58,6 +58,17 @@ public class PlayerService {
 
     }
 
+    public PlayerDetailInfo getPlayerDetailInfoById(Integer playerId) {
+        PlayerDetail playerDetail = playerDetailRepository.findPlayerDetailBy(playerId);
+
+        Player player = playerRepository.getReferenceById(playerId);
+        Integer clubId = player.getClub().getId();
+
+        PlayerDetailInfo playerDetailInfo = playerDetailMapper.toPlayerDetailInfo(playerDetail);
+        playerDetailInfo.setClubId(clubId);
+        return playerDetailInfo;
+    }
+
     public List<PlayerNameInfo> findAllPlayers() {
         List<Player> players = playerRepository.findAllPlayers();
         return playerMapper.toPlayerNameInfos(players);
@@ -118,12 +129,6 @@ public class PlayerService {
         Player player = playerRepository.getReferenceById(playerId);
         player.setStatus(Status.DEACTIVATED);
         playerRepository.save(player);
-    }
-
-    public PlayerDetailInfo getPlayerDetailInfoById(Integer playerId) {
-        PlayerDetail playerDetail = playerDetailRepository.getReferenceById(playerId);
-        PlayerDetailInfo playerDetailInfo = playerDetailMapper.toPlayerDetailInfo(playerDetail);
-        return playerDetailInfo;
     }
 
 

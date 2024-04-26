@@ -18,26 +18,25 @@ public interface PlayerDetailMapper {
     @Mapping(source = "bestFoot", target = "bestFoot")
     PlayerDetail toPlayerDetail(PlayerDetailInfo playerDetailInfo);
 
-
     @Mapping(source = "bestFoot", target = "bestFoot")
     @Mapping(source = "player.name", target = "playerName")
+    //    @Mapping(source = "", target = "clubId")
     @Mapping(source = "gender", target = "gender")
     @Mapping(source = "nationality", target = "nationality")
-    @Mapping(source = "birthDate", target = "birthDate", qualifiedByName = "localDateToString")
+    //todo: , qualifiedByName = "localDateToString"  kustutatud debugimiseks
+    @Mapping(source = "birthDate", target = "birthDate")
     @Mapping(source = "height", target = "height")
     @Mapping(source = "weight", target = "weight")
     PlayerDetailInfo toPlayerDetailInfo(PlayerDetail playerDetail);
 
     @Mapping(source = "gender", target = "gender")
+    //todo: , qualifiedByName = "stringToLocalDate" kustutada kui ei tööta
     @Mapping(source = "birthDate", target = "birthDate", qualifiedByName = "stringToLocalDate")
     @Mapping(source = "height", target = "height")
     @Mapping(source = "weight", target = "weight")
     @Mapping(source = "nationality", target = "nationality")
     @Mapping(source = "bestFoot", target = "bestFoot")
     void toUpdatePlayer(PlayerDetailInfo playerDetailInfo, @MappingTarget PlayerDetail playerDetail);
-
-
-
 
     @Named("localDateToString")
     static String localDateToString(LocalDate localDate) {
