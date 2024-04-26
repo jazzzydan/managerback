@@ -21,6 +21,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -40,11 +41,12 @@ public class PlayerService {
 
         List<Player> players;
         if (request.getPlayerName().isEmpty()) {
-            players = playerRepository.findPlayersBy(
+            players = playerRepository.findActivePlayersBy(
                     request.getConfederationId(),
                     request.getCountryId(),
                     request.getLeagueId(),
-                    request.getClubId());
+                    request.getClubId(),
+                    Status.ACTIVE);
         } else {
             players = playerRepository.searchPlayersBy(request.getPlayerName());
         }
