@@ -38,60 +38,61 @@ public class ObservationService {
         return observationInfos;
     }
 
-    public ObservationDetailedInfo getObservation(Integer observationId) {
+    public ObservationDetailedInfo getObservation(Integer playerObservationId) {
 
-        PlayerObservation playerObservation = playerObservationRepository.getReferenceById(observationId);
+        PlayerObservation playerObservation = playerObservationRepository.getReferenceById(playerObservationId);
         ObservationDetailedInfo observationDetailedInfo = playerObservationMapper.toObservationDetailedInfo(playerObservation);
 
-//        todo: kontrollida, kas parandab observationPosition redigeerimisel
-
-        Optional<ObservationPosition> observationPositionOptional = observationPositionRepository.findById(observationId);
+        Optional<ObservationPosition> observationPositionOptional = observationPositionRepository.getOptionalObservationPositionBy(playerObservationId);
         if (observationPositionOptional.isPresent()) {
             ObservationPosition observationPosition = observationPositionOptional.get();
-            observationDetailedInfo.setObservationPositionId(observationPosition.getPosition().getId());
+            observationDetailedInfo.setPositionId(observationPosition.getPosition().getId());
         } else {
-            observationDetailedInfo.setObservationPositionId(0);
+            observationDetailedInfo.setPositionId(0);
         }
 
         return observationDetailedInfo;
     }
 
     @Transactional
-    public void updateObservation(Integer observationId, ObservationUpdateInfo observationUpdateInfo) {
-        PlayerObservation observation = playerObservationRepository.getReferenceById(observationId);
-        playerObservationMapper.updateObservation(observationUpdateInfo, observation);
-//        handleUserUpdate(observationUpdateInfo, observation);
-//        handlePlayerUpdate(observationUpdateInfo, observation);
-        handleGameUpdate(observationUpdateInfo, observation);
-        handleObservationPositionUpdate(observationUpdateInfo, observation);
+    public void updateObservation(Integer playerObservationId, ObservationUpdateInfo observationUpdateInfo) {
+        PlayerObservation playerObservation = playerObservationRepository.getReferenceById(playerObservationId);
+        playerObservationMapper.updatePlayerObservation(observationUpdateInfo, playerObservation);
 
-        playerObservationRepository.save(observation);
+//        add following if new observation to be added:
+//        handleUserUpdate(observationUpdateInfo, playerObservation);
+//        handlePlayerUpdate(observationUpdateInfo, playerObservation);
 
+        handleGameUpdate(observationUpdateInfo, playerObservation);
+        playerObservationRepository.save(playerObservation);
+
+        handleObservationPositionUpdate(observationUpdateInfo, playerObservation);
     }
 
-    private void handleGameUpdate(ObservationUpdateInfo observationUpdateInfo, PlayerObservation observation) {
-        if (!haveSameGameId(observationUpdateInfo, observation)) {
+    private void handleGameUpdate(ObservationUpdateInfo observationUpdateInfo, PlayerObservation playerObservation) {
+        if (!haveSameGameId(observationUpdateInfo, playerObservation)) {
             Game game = gameRepository.getReferenceById(observationUpdateInfo.getGameId());
-            observation.setGame(game);
+            playerObservation.setGame(game);
         }
     }
 
-    private boolean haveSameGameId(ObservationUpdateInfo observationUpdateInfo, PlayerObservation observation) {
-        return observation.getGame().getId().equals(observationUpdateInfo.getGameId());
+    private boolean haveSameGameId(ObservationUpdateInfo observationUpdateInfo, PlayerObservation playerObservation) {
+        return playerObservation.getGame().getId().equals(observationUpdateInfo.getGameId());
     }
 
-    private void handleObservationPositionUpdate(ObservationUpdateInfo observationUpdateInfo, PlayerObservation observation) {
-        Integer observationPositionId = observationUpdateInfo.getObservationPositionId();
+    private void handleObservationPositionUpdate(ObservationUpdateInfo observationUpdateInfo, PlayerObservation playerObservation) {
+        Integer observationPositionId = observationUpdateInfo.getPositionId();
+        Integer playerObservationId = playerObservation.getId();
         if(observationPositionId == 0) {
-            observationPositionRepository.deleteObservationPositionBy(observation.getId());
+            observationPositionRepository.deleteObservationPositionBy(playerObservationId);
         } else {
-            observationPositionRepository.deleteObservationPositionBy(observation.getId());
-            createAndSaveObservationPosition(observationUpdateInfo, observation);
+            observationPositionRepository.deleteObservationPositionBy(playerObservationId);
+            createAndSaveObservationPosition(observationUpdateInfo, playerObservation);
         }
     }
 
     private void createAndSaveObservationPosition(ObservationUpdateInfo observationUpdateInfo, PlayerObservation observation) {
-        Position position = positionRepository.getReferenceById(observationUpdateInfo.getObservationPositionId());
+        Position position = positionRepository.getReferenceById(observationUpdateInfo.getPositionId());
         ObservationPosition observationPosition = new ObservationPosition();
         observationPosition.setPosition(position);
         observationPosition.setPlayerObservation(observation);

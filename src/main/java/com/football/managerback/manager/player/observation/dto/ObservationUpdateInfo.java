@@ -21,7 +21,7 @@ public class ObservationUpdateInfo implements Serializable {
     private Integer gameId;
     private Integer userId;
     private Integer playerId;
-    private Integer observationPositionId;
+    private Integer positionId;
     @NotNull
     private LocalDate date;
     private Integer marking;

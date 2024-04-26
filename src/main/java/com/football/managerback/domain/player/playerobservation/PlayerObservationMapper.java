@@ -62,7 +62,6 @@ public interface PlayerObservationMapper {
     }
 
     @Mapping(source = "date", target = "date", qualifiedByName = "stringToLocalDate")
-//    todo: kuupaev konverteerida!
     @Mapping(source = "marking", target = "marking")
     @Mapping(source = "setPieces", target = "setPieces")
     @Mapping(source = "technique", target = "technique")
@@ -81,6 +80,6 @@ public interface PlayerObservationMapper {
     @Mapping(source = "minutes", target = "minutes")
     @Mapping(source = "comment", target = "comment")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    PlayerObservation updateObservation(ObservationUpdateInfo observationUpdateInfo,@MappingTarget PlayerObservation playerObservation);
+    PlayerObservation updatePlayerObservation(ObservationUpdateInfo observationUpdateInfo, @MappingTarget PlayerObservation playerObservation);
 
 }
