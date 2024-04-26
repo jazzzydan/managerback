@@ -1,9 +1,7 @@
 package com.football.managerback.domain.player.playerdetail;
 
 import com.football.managerback.manager.player.dto.PlayerDetailInfo;
-import com.football.managerback.manager.player.dto.PlayerInfo;
 import com.football.managerback.util.DateConverter;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.mapstruct.*;
 
 import java.time.LocalDate;
@@ -17,19 +15,28 @@ public interface PlayerDetailMapper {
     @Mapping(source = "weight", target = "weight")
     @Mapping(source = "nationality", target = "nationality")
     @Mapping(source = "bestFoot", target = "bestFoot")
-    PlayerDetail toPlayerDetail(PlayerDetailInfo playerDetailInfo);
+    PlayerDetail toPlayerDetailUpdate(PlayerDetailInfo playerDetailInfo);
 
-
-
-
-
-    @Mapping(source = "player.id", target = "playerId")
+    @Mapping(source = "bestFoot", target = "bestFoot")
     @Mapping(source = "player.name", target = "playerName")
+    //    @Mapping(source = "", target = "clubId")
+    @Mapping(source = "gender", target = "gender")
     @Mapping(source = "nationality", target = "nationality")
-    @Mapping(source = "birthDate", target = "birthDate", qualifiedByName = "localDateToString")
+    //todo: , qualifiedByName = "localDateToString"  kustutatud debugimiseks
+    @Mapping(source = "birthDate", target = "birthDate")
     @Mapping(source = "height", target = "height")
     @Mapping(source = "weight", target = "weight")
-    PlayerInfo toPlayerInfo(PlayerDetail playerDetail);
+    PlayerDetailInfo toPlayerDetailInfo(PlayerDetail playerDetail);
+
+    @Mapping(source = "gender", target = "gender")
+    //todo: , qualifiedByName = "stringToLocalDate" kustutada kui ei tööta
+    @Mapping(source = "birthDate", target = "birthDate")
+    @Mapping(source = "height", target = "height")
+    @Mapping(source = "weight", target = "weight")
+    @Mapping(source = "nationality", target = "nationality")
+    @Mapping(source = "bestFoot", target = "bestFoot")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    PlayerDetail toPlayerDetailUpdate(PlayerDetailInfo playerDetailInfo, @MappingTarget PlayerDetail playerDetail);
 
     @Named("localDateToString")
     static String localDateToString(LocalDate localDate) {

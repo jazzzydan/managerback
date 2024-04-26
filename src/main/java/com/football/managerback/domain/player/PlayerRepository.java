@@ -3,6 +3,7 @@ package com.football.managerback.domain.player;
 import com.football.managerback.manager.player.dto.PlayerDetailInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 

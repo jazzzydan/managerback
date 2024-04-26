@@ -58,6 +58,17 @@ public class PlayerService {
 
     }
 
+    public PlayerDetailInfo getPlayerDetailInfoById(Integer playerId) {
+        PlayerDetail playerDetail = playerDetailRepository.findPlayerDetailBy(playerId);
+
+        Player player = playerRepository.getReferenceById(playerId);
+        Integer clubId = player.getClub().getId();
+
+        PlayerDetailInfo playerDetailInfo = playerDetailMapper.toPlayerDetailInfo(playerDetail);
+        playerDetailInfo.setClubId(clubId);
+        return playerDetailInfo;
+    }
+
     public List<PlayerNameInfo> findAllPlayers() {
         List<Player> players = playerRepository.findAllPlayers();
         return playerMapper.toPlayerNameInfos(players);
@@ -78,13 +89,30 @@ public class PlayerService {
         handlePlayerNameAvailabilityValidation(playerDetailInfo);
         Player player = createNewPlayer(playerDetailInfo);
         playerRepository.save(player);
+
         PlayerDetail playerDetail = createNewPlayerDetail(playerDetailInfo);
         playerDetail.setPlayer(player);
+
+        playerDetailRepository.save(playerDetail);
+    }
+
+    @Transactional
+    public void updatePlayer(Integer playerId, PlayerDetailInfo playerDetailInfo) {
+
+        PlayerDetail playerDetail = playerDetailRepository.findPlayerDetailBy(playerId);
+        playerDetailMapper.toPlayerDetailUpdate(playerDetailInfo, playerDetail);
+
+        Club club = clubRepository.getReferenceById(playerDetailInfo.getClubId());
+        Player player = playerRepository.getReferenceById(playerId);
+        player.setName(playerDetailInfo.getPlayerName());
+        player.setClub(club);
+        playerRepository.save(player);
+
         playerDetailRepository.save(playerDetail);
     }
 
     private PlayerDetail createNewPlayerDetail(PlayerDetailInfo playerDetailInfo) {
-        PlayerDetail playerDetail = playerDetailMapper.toPlayerDetail(playerDetailInfo);
+        PlayerDetail playerDetail = playerDetailMapper.toPlayerDetailUpdate(playerDetailInfo);
         LocalDate dateOfBirth = playerDetailInfo.getBirthDate();
         Period age = Period.between(dateOfBirth, LocalDate.now());
         int ageInYears = age.getYears();
@@ -111,11 +139,4 @@ public class PlayerService {
     }
 
 
-    public PlayerInfo getPlayerDetailInfoById(Integer playerId) {
-        PlayerDetail playerDetail = playerDetailRepository.getReferenceById(playerId);
-        PlayerInfo playerInfo = playerDetailMapper.toPlayerInfo(playerDetail);
-        playerInfo.setObservationExists(playerObservationRepository.playerObservationExists(playerId));
-        return playerInfo;
-
-    }
 }
