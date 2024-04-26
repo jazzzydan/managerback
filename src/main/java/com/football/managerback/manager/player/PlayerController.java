@@ -59,13 +59,12 @@ public class PlayerController {
         return playerService.getPlayerDetailInfoById(playerId);
     }
 
-    @PutMapping("/players/{playerId}")
-    public PlayerDetailInfo updatePlayerDetailInfo(@PathVariable Integer playerId, @RequestBody PlayerDetailInfo playerDetail) {
-        return playerService.updatePlayer(playerId, playerDetail);
+    @PutMapping("/player/{playerId}")
+    public void updatePlayerDetailInfo(@PathVariable Integer playerId, @RequestBody PlayerDetailInfo playerDetail) {
+        playerService.updatePlayer(playerId, playerDetail);
     }
 
 }
-
 
     //todo: lisada ACTIVE statusega mängijate otsimine (hetkel kuvatakse kõik mängijad)
     //todo: kuvada ainult need mängijad kes on sisselogitud scout'i observation'i all

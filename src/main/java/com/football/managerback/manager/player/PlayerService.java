@@ -89,23 +89,30 @@ public class PlayerService {
         handlePlayerNameAvailabilityValidation(playerDetailInfo);
         Player player = createNewPlayer(playerDetailInfo);
         playerRepository.save(player);
+
         PlayerDetail playerDetail = createNewPlayerDetail(playerDetailInfo);
         playerDetail.setPlayer(player);
+
         playerDetailRepository.save(playerDetail);
     }
 
     @Transactional
-    public PlayerDetailInfo updatePlayer(Integer playerId, PlayerDetailInfo playerDetailInfo) {
-        handlePlayerNameAvailabilityValidation(playerDetailInfo);
-        PlayerDetail playerDetail = playerDetailRepository.getReferenceById(playerId);
-        playerDetailMapper.toUpdatePlayer(playerDetailInfo, playerDetail);
-        playerDetailRepository.save(playerDetail);
+    public void updatePlayer(Integer playerId, PlayerDetailInfo playerDetailInfo) {
 
-        return null;
+        PlayerDetail playerDetail = playerDetailRepository.findPlayerDetailBy(playerId);
+        playerDetailMapper.toPlayerDetailUpdate(playerDetailInfo, playerDetail);
+
+        Club club = clubRepository.getReferenceById(playerDetailInfo.getClubId());
+        Player player = playerRepository.getReferenceById(playerId);
+        player.setName(playerDetailInfo.getPlayerName());
+        player.setClub(club);
+        playerRepository.save(player);
+
+        playerDetailRepository.save(playerDetail);
     }
 
     private PlayerDetail createNewPlayerDetail(PlayerDetailInfo playerDetailInfo) {
-        PlayerDetail playerDetail = playerDetailMapper.toPlayerDetail(playerDetailInfo);
+        PlayerDetail playerDetail = playerDetailMapper.toPlayerDetailUpdate(playerDetailInfo);
         LocalDate dateOfBirth = playerDetailInfo.getBirthDate();
         Period age = Period.between(dateOfBirth, LocalDate.now());
         int ageInYears = age.getYears();

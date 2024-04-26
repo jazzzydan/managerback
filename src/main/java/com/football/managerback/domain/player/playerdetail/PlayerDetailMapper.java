@@ -1,7 +1,6 @@
 package com.football.managerback.domain.player.playerdetail;
 
 import com.football.managerback.manager.player.dto.PlayerDetailInfo;
-import com.football.managerback.manager.player.dto.PlayerInfo;
 import com.football.managerback.util.DateConverter;
 import org.mapstruct.*;
 
@@ -16,7 +15,7 @@ public interface PlayerDetailMapper {
     @Mapping(source = "weight", target = "weight")
     @Mapping(source = "nationality", target = "nationality")
     @Mapping(source = "bestFoot", target = "bestFoot")
-    PlayerDetail toPlayerDetail(PlayerDetailInfo playerDetailInfo);
+    PlayerDetail toPlayerDetailUpdate(PlayerDetailInfo playerDetailInfo);
 
     @Mapping(source = "bestFoot", target = "bestFoot")
     @Mapping(source = "player.name", target = "playerName")
@@ -31,12 +30,13 @@ public interface PlayerDetailMapper {
 
     @Mapping(source = "gender", target = "gender")
     //todo: , qualifiedByName = "stringToLocalDate" kustutada kui ei tööta
-    @Mapping(source = "birthDate", target = "birthDate", qualifiedByName = "stringToLocalDate")
+    @Mapping(source = "birthDate", target = "birthDate")
     @Mapping(source = "height", target = "height")
     @Mapping(source = "weight", target = "weight")
     @Mapping(source = "nationality", target = "nationality")
     @Mapping(source = "bestFoot", target = "bestFoot")
-    void toUpdatePlayer(PlayerDetailInfo playerDetailInfo, @MappingTarget PlayerDetail playerDetail);
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    PlayerDetail toPlayerDetailUpdate(PlayerDetailInfo playerDetailInfo, @MappingTarget PlayerDetail playerDetail);
 
     @Named("localDateToString")
     static String localDateToString(LocalDate localDate) {
